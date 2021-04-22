@@ -7,7 +7,8 @@ import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analy
 import {SharedService} from "./shared.service";
 
 import {HttpClientModule} from '@angular/common/http'
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -16,9 +17,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]
