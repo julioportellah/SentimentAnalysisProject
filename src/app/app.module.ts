@@ -10,11 +10,17 @@ import {HttpClientModule} from '@angular/common/http'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { RestService } from './rest.service';
+import { AboutAuthorsComponent } from './about-authors/about-authors.component';
+import { HowItWorksComponent } from './how-it-works/how-it-works.component';
+import { LinkToGithubComponent } from './link-to-github/link-to-github.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SentimentAnalysisComponent
+    SentimentAnalysisComponent,
+    AboutAuthorsComponent,
+    HowItWorksComponent,
+    LinkToGithubComponent
   ],
   imports: [
     BrowserModule,

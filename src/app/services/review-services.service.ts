@@ -18,6 +18,7 @@ export class ReviewServicesService {
           resolve(resp);
           return resp;
         }, error => {
+          console.log(error);
           let respError = error;
           if (error.status === 404) {
             respError = ['Service not found'];

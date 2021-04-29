@@ -46,6 +46,9 @@ export class SentimentAnalysisComponent implements OnInit {
     {
       this.reviewService.evaluateReview(textToAnalyzeValue).then(answer=>{
         this.resultAnalysis=Math.round(answer.reviewValue*100);
+      }).catch((err) => {
+        this.resultAnalysis = -1;
+        
       });
     }else{
       this.resultAnalysis = -1
