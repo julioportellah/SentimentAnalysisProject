@@ -9,6 +9,7 @@ import {SharedService} from "./shared.service";
 import {HttpClientModule} from '@angular/common/http'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { RestService } from './rest.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     ReactiveFormsModule,
     NgbModule,
   ],
-  providers: [SharedService],
+  providers: [SharedService, RestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

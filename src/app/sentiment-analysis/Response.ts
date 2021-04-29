@@ -2,7 +2,7 @@ export class Response
 {
     answerStr:string;
     
-    constructor (answerStr)
+    constructor(answerStr:string)
     {
         this.answerStr=answerStr;
     }

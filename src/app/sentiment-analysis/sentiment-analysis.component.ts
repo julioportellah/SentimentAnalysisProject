@@ -6,6 +6,8 @@ import {HttpClient, HttpClientModule,HttpHeaders, HttpParams} from "@angular/com
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { RestService } from '../rest.service';
+import { ReviewServicesService } from '../services/review-services.service';
 
 @Component({
   selector: 'app-sentiment-analysis',
@@ -16,12 +18,14 @@ export class SentimentAnalysisComponent implements OnInit {
   msg:string;
   textToAnalyzeValue:string;
   result:string;
+  resultAnalysis:number;
   // private subscription: Subscription;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private rs:RestService, private reviewService:ReviewServicesService) { 
     this.textToAnalyzeValue = '';
     this.msg='';
     this.result = '';
+    this.resultAnalysis = -1;
     // this.subscription = this.sharedService.pipe().subscribe();
   }
   
@@ -38,12 +42,14 @@ export class SentimentAnalysisComponent implements OnInit {
   }
 
   onAnalyze(textToAnalyzeValue: string) {
-    console.log(textToAnalyzeValue);
-    // var result = (this.sharedService.analyzeText(textToAnalyzeValue));
-    var result2 = this.http.get<string>('http://127.0.0.1:5000/').subscribe();
-    console.log(result2);
-    var result = this.testHL();
-    console.log(result);
+    if (textToAnalyzeValue!="")
+    {
+      this.reviewService.evaluateReview(textToAnalyzeValue).then(answer=>{
+        this.resultAnalysis=Math.round(answer.reviewValue*100);
+      });
+    }else{
+      this.resultAnalysis = -1
+    }
   }
   clickEvent(){
    this.msg='Button is Clicked';
